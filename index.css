@@ -68,3 +68,8 @@
   display: flex;
   
 }
+.user-card-container{
+  padding: 10px;
+  border: 1px solid black;
+
+}
