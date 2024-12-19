@@ -1,35 +1,14 @@
 {
-  "name": "yes",
-  "version": "1.0.0",
-  "description": "React project by Surbhi",
-    "scripts": {
-      "start": "parcel index.html",
-      "build": "parcel build index.html",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/SURBHI1418/React.git"
-  },
-  "keywords": [
-    "react",
-    "surbhi"
-  ],
-  "author": "Surbhi Kumari",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/SURBHI1418/React/issues"
-  },
-  "homepage": "https://github.com/SURBHI1418/React#readme",
-  "devDependencies": {
-    "parcel": "^2.13.0",
-    "process": "^0.11.10"
+  "scripts": {
+    "start": "parcel index.html"
   },
   "dependencies": {
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
   },
-  "browserlist": [
-    "last 2 version"
-  ]
+  "devDependencies": {
+    "parcel": "^2.13.2",
+    "process": "^0.11.10"
+  }
 }

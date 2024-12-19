@@ -62,3 +62,9 @@ Hunger.com
  2. useEffect()
 
 
+ # 2 types of Routing in web page
+ - Client Site Routing
+ - Server Site Routing
+ 
+
+
