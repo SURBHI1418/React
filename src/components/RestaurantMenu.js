@@ -1,37 +1,16 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
-import { MENU_API_URL } from "../utils/constants";
 import { useParams } from "react-router-dom";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
 const RestaurantMenu = () => {
-  const [restaurantMenuData, setRestaurantMenuData] = useState([]);
   const { resId } = useParams();
+  const restaurantMenuData = useRestaurantMenu(resId);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(MENU_API_URL + resId);
-
-        if (response.ok) {
-          const data = await response.json(); // Assuming the data is in JSON format
-          setRestaurantMenuData(data.data); // Update the state with the fetched data
-        } else {
-          console.error("Failed to fetch data");
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []); // Empty dependency array to run only once when the component mounts
-
-  // useEffect(() => {
-  //   console.log("🚀 ~ useEffect ~ restaurantMenuData:", restaurantMenuData);
-  // }, [restaurantMenuData]);
-  if (restaurantMenuData.length === 0) {
-    return <Shimmer />;
+  // if (restaurantMenuData === null || restaurantMenuData.length === 0) {
+  //   return <Shimmer />;
+  // }
+  if (!restaurantMenuData) {
+    return <Shimmer />; // Show shimmer when no data is available or loading
   }
-
   const { name, costForTwoMessage, cuisines } =
     restaurantMenuData?.cards[2]?.card?.card?.info;
   const { deliveryTime } = restaurantMenuData?.cards[2]?.card?.card?.info?.sla;
