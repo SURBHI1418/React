@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 export const fetchRestaurantData = () => {
   const [restaurantData, setRestaurantData] = useState([]);
+  // console.log("Body Render", restaurantData);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -16,6 +18,7 @@ export const fetchRestaurantData = () => {
       json.data.cards.forEach((element) => {
         if (
           element.card.card["@type"] ===
+            // "type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle"
             "type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget" &&
           element.card.card.id === "top_brands_for_you"
         ) {
@@ -44,11 +47,12 @@ const Body = () => {
   if (onlineStatus == false)
     return <h1>Looks like you're offine check your internet connnection. </h1>;
 
+const {setUserName, loggedInUser}=useContext(UserContext);
   return restaurantData.length == 0 ? (
     <Shimmer />
   ) : (
     <div className="body-container">
-      <div className="flex">
+      <div className="flex ">
         <div className="search-container m-4 p-4">
           <input
             type="text"
@@ -58,7 +62,8 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+          <button
+            className="px-4 py-2 bg-green-100 m-4 rounded-lg"
             onClick={() => {
               //Filter the restaurant
               // search Text
@@ -71,21 +76,26 @@ const Body = () => {
           >
             Search
           </button>
-          
         </div>
         <div className="m-4 p-4 flex items-center ">
-        <button
-          className="px-4 py-2 bg-gray-100 rounded-lg "
-          onClick={() => {
-            const filteredData = restaurantData.filter((res) => {
-              return res.info.avgRating > 4.3;
-            });
-            setFilterData(filteredData);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
-      </div>
+          <button
+            className="px-4 py-2 bg-gray-100 rounded-md "
+            onClick={() => {
+              const filteredData = restaurantData.filter((res) => {
+                return res.info.avgRating > 4.3;
+              });
+              setFilterData(filteredData);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
+        <div className="input m-4 p-4 flex items-center ">
+          <label>UserName : </label>
+          <input className="border border-black p-2 " 
+          value={loggedInUser}
+          onChange={(e)=> setUserName(e.target.value)}/>
+        </div>
       </div>
 
       <div className="restaurant-container flex flex-wrap">

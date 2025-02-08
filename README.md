@@ -65,6 +65,10 @@ Hunger.com
  # 2 types of Routing in web page
  - Client Site Routing
  - Server Site Routing
+
+ # Redux ToolKit
+    - install Libaray @reduxjs/toolkit and react-redux
+    
  
 
 
