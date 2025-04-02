@@ -1,12 +1,16 @@
 import ItemListMenu from "./ItemListMenu";
-const RestaurantCategories = ({ data, showItem, setShowIndex }) => {
+const RestaurantCategories = ({ data, showItem, setShowIndex, index }) => {
   // //   console.log("🚀 ~ RestaurantCategories ~ data:", data);
 
   // const [showItem, setShowItem] = useState(false);
 
   const handleClick = () => {
     //   setShowItem(!showItem);
-    setShowIndex();
+    if (showItem) {
+      setShowIndex(null); // Close the currently open item
+    } else {
+      setShowIndex(index); // Open the clicked item
+    }
   };
   return (
     <div>
@@ -18,7 +22,8 @@ const RestaurantCategories = ({ data, showItem, setShowIndex }) => {
           <span className="font-bold text-lg">
             {data.title} ({data.itemCards.length})
           </span>
-          <span>⬇️</span>
+          <span>{showItem ? "⬆️" : "⬇️"}</span>{" "}
+          {/* Change icon based on open/close */}
         </div>
         {showItem && <ItemListMenu items={data.itemCards} />}
       </div>

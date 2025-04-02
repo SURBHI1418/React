@@ -68,7 +68,19 @@ Hunger.com
 
  # Redux ToolKit
     - install Libaray @reduxjs/toolkit and react-redux
-    
+    - build our own store
+    - connect our store to the app
+    - create a cart silce 
+    - dispatch(action)
+    - reducer function
+    - selector
+
+
+# Type of Testing(developer)
+   - Unit Testing
+   - Integration Testing
+   - End to End Testing (e2e Testing)
+
  
 
 
