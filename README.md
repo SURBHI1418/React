@@ -81,6 +81,18 @@ Hunger.com
    - Integration Testing
    - End to End Testing (e2e Testing)
 
+# Setting up Testing in our app
+   - Install React Testing Library
+   - Intalled jest
+   - Installed Babel Dependencies
+   - Cinfigure Babel
+   - Cinfigure Parcel Config file to disable default babel transpilation
+   - Jest COnfiguration---npx jest -- init
+   - Install json Library
+   - Install @babel/preset-react
+   - Install @testing-library/jest-dom
+
+
  
 
 

@@ -6,6 +6,7 @@ const RestaurantCard = (props) => {
     restaurantData;
 
   const { deliveryTime } = restaurantData?.sla;
+  console.log(restaurantData);
 
   return (
     <div className="restaurant-card-container m-4 p-4 w-[250px] bg-gray-100 rounded-lg hover:bg-gray-300 ">
