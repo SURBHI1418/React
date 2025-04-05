@@ -5,12 +5,24 @@ const useRestaurantMenu = (resId) => {
   const [restaurantInfo, setRestaurantInfo] = useState(null);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (!!resId) {
+      fetchData();
+    }
+  }, [resId]);
+
   const fetchData = async () => {
-    const data = await fetch(MENU_API_URL + resId);
-    const json = await data.json();
-    setRestaurantInfo(json.data);
+    try {
+      const response = await fetch(MENU_API_URL + resId);
+
+      if (!response || !response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const json = await response.json();
+      setRestaurantInfo(json.data);
+    } catch (error) {
+      console.error("Error fetching menu data:", error);
+    }
   };
 
   return restaurantInfo;

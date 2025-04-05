@@ -9,7 +9,9 @@ const RestaurantCard = (props) => {
   console.log(restaurantData);
 
   return (
-    <div className="restaurant-card-container m-4 p-4 w-[250px] bg-gray-100 rounded-lg hover:bg-gray-300 ">
+    <div 
+    data-testid="restaurantCard"
+    className="restaurant-card-container m-4 p-4 w-[250px] bg-gray-100 rounded-lg hover:bg-gray-300 ">
       <img
         className="restaurant-logo rounded-lg"
         alt="restaurant-logo"

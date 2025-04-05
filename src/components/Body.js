@@ -56,6 +56,7 @@ const {setUserName, loggedInUser}=useContext(UserContext);
         <div className="search-container m-4 p-4">
           <input
             type="text"
+            data-testid="searchInput"
             className="search-input-container border border-gray-700 rounded-md"
             value={searchText}
             onChange={(e) => {

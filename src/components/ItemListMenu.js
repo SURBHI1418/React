@@ -7,12 +7,14 @@ const ItemListMenu = ({ items }) => {
     //dispatch an actioin
     dispatch(addItem(item));
   };
-  console.log(handleAddItem);
+  // console.log(handleAddItem);
+  // console.log(ItemListMenu);
 
   return (
     <div className="bg-gray-100">
       {items.map((item) => (
         <div
+          data-testid="foodItems"
           key={item.card.info.id}
           className="p-2 m-2 border-b-2 border-gray-400 text-left flex justify-between "
         >
